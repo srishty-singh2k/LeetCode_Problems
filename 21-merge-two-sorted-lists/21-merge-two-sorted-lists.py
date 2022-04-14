@@ -11,13 +11,11 @@ class Solution:
             return list2
         elif list2==None:
             return list1
-        res = None
-        head = None
+        res,head = None,None
         while(list1!=None and list2!=None):  
-            print(list1.val,list2.val)
+            #print(list1.val,list2.val)
             if list1.val<=list2.val:
-                temp = ListNode()
-                temp.val=list1.val
+                temp = ListNode(list1.val)
                 if head==None:
                     res=temp
                     head=temp
@@ -25,10 +23,9 @@ class Solution:
                     head.next=temp
                     head=temp
                 list1=list1.next
-                print("From1",res,head)
+                #print("From1",res,head)
             elif list1.val>list2.val:
-                temp = ListNode()
-                temp.val=list2.val
+                temp = ListNode(list2.val)
                 if head==None:
                     res=temp
                     head=temp
@@ -36,25 +33,15 @@ class Solution:
                     head.next=temp
                     head=temp
                 list2=list2.next
-                print("From2",res,head)
+                #print("From2",res,head)
 
         if(list1==None and list2==None):
             return res
         if(list1!=None):
-            while(list1!=None):
-                temp=ListNode()
-                temp.val=list1.val
-                head.next = temp
-                head=temp
-                list1=list1.next
+            head.next=list1
             return res
         if(list2!=None):
-            while(list2!=None):
-                temp=ListNode()
-                temp.val=list2.val
-                head.next = temp
-                head=temp
-                list2=list2.next
+            head.next=list2
             return res
 
             
