@@ -22,10 +22,6 @@ class Solution:
             else:
                 return None
             
-        
-        if head is None:
-            return None
-        
         l = []
         while(head):
             l.append(head.val)
