@@ -13,17 +13,15 @@ class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
         
         def root(l):
-            size = len(l)
-            mid = size//2
-            node = TreeNode(l[mid])
-            if size == 1:
-                return node
-            elif size == 2:
+            if l != []:
+                mid =len(l)//2
+                node = TreeNode(l[mid])
                 node.left = root(l[:mid])
+                node.right = root(l[mid+1:])
                 return node
-            node.left = root(l[:mid])
-            node.right = root(l[mid+1:])
-            return node
+            else:
+                return None
+            
         
         if head is None:
             return None
