@@ -12,21 +12,23 @@
 class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
         
-        nums = []
+        def root(l):
+            mid = len(l)//2
+            node = TreeNode(l[mid])
+            if len(l) == 1:
+                return node
+            elif len(l) == 2:
+                node.left = root(l[:mid])
+                return node
+            node.left = root(l[:mid])
+            node.right = root(l[mid+1:])
+            return node
         
+        if head is None:
+            return None
+        
+        l = []
         while(head):
-            nums.append(head.val)
+            l.append(head.val)
             head = head.next
-         
-        def sortedArrayToBST(nums):
-        
-            if nums!=[]:
-                half = len(nums)//2
-                root = TreeNode(nums[half])
-                root.left = sortedArrayToBST(nums[:half])
-                root.right = sortedArrayToBST(nums[half+1:])
-                return root
-            else:
-                return None    
-        
-        return sortedArrayToBST(nums)
+        return root(l)
