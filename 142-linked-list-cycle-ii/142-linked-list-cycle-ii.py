@@ -6,24 +6,21 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if head is None or head.next is None or head.next.next is None: # If we ever find one node point to None means it can form a cycle 
-            return None
-        
-        first = head.next
-        second = head.next.next
-
-        
-        while first != second: # If we ever find one node point to None means it can form a cycle 
-            if second is not None:
-                first = first.next
-                second = second.next
-                second = second.next if second is not None else None
+        if head:
+            isCycle = False
+            slow = fast = head
+            while fast.next and fast.next.next :
+                slow = slow.next
+                fast = fast.next.next
+                if fast == slow:
+                    isCycle = True
+                    break
+            
+            if isCycle:
+                fast = head
+                while fast != slow:
+                    fast = fast.next
+                    slow = slow.next
+                return fast
             else:
                 return None
-            
-        first = head
-            
-        while first != second:
-            first = first.next
-            second = second.next
-        return first
