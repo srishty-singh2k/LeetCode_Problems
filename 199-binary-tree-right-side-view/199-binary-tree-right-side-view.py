@@ -9,15 +9,14 @@ class Solution:
         if not root:
             return []
         q = [root]
-        res = [root.val]
+        res = []
         while(q):
+            res.append(q[-1].val)
             for i in range(len(q)):
                 x = q.pop(0)
                 if x.left:
                     q.append(x.left)
                 if x.right:
                     q.append(x.right)
-            if q:
-                res.append(q[-1].val)
         return res
             
