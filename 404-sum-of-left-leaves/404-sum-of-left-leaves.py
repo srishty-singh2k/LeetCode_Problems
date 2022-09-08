@@ -7,14 +7,11 @@
 class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
         def leftLeaf(root, left):
-            if not root: return
-            if left and not root.left and not root.right:
-                nonlocal sum_
-                sum_ += root.val
-            leftLeaf(root.left, True)
-            leftLeaf(root.right, False)
-        sum_ = 0
-        leftLeaf(root.left, True)
-        leftLeaf(root.right, False)
-        return sum_
+            if not root: return 0
+            if not root.left and not root.right:
+                return root.val if left else 0
+            return leftLeaf(root.left, True) + leftLeaf(root.right, False)
+        
+        return leftLeaf(root, False)
+        
         
