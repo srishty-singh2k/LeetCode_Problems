@@ -6,11 +6,14 @@
 #         self.right = right
 class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
-        def inorder(root):
-            if root:
-                inorder(root.left)
-                l.append(root.val)
-                inorder(root.right)
-        l = []
+        self.previous = self.minimum = float('inf')
+
+        def inorder(node):
+            if node:
+                inorder(node.left)
+                self.minimum = min(self.minimum, abs(node.val-self.previous))
+                self.previous = node.val
+                inorder(node.right)
+
         inorder(root)
-        return min(b - a for a, b in zip(l, l[1:]))
+        return self.minimum
