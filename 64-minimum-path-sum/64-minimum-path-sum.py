@@ -10,5 +10,4 @@ class Solution:
                     up = grid[i-1][j] if i-1>=0 else float('inf')
                     left = grid[i][j-1] if j-1>=0 else float('inf')
                     grid[i][j] += min(up, left)
-        print(grid)
         return grid[m-1][n-1]
