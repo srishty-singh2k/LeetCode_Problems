@@ -6,14 +6,10 @@
 #         self.right = right
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        def path(root, s):
+        def path(root, cur):
             if not root: return 0
+            cur = cur * 10 + root.val
             if not root.left and not root.right:
-                nonlocal sum_ 
-                sum_ += int(s + str(root.val))
-            path(root.left, s + str(root.val))
-            path(root.right, s + str(root.val))
-                
-        sum_ = 0
-        path(root, "") if root else None
-        return sum_
+                return cur
+            return path(root.left, cur) + path(root.right, cur)
+        return path(root, 0)
