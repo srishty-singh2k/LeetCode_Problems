@@ -13,7 +13,4 @@ class Solution:
                 inorder(root.right)
         l = []
         inorder(root)
-        diff = float('inf')
-        for i in range(1, len(l)):
-            diff = min(diff, l[i]-l[i-1])
-        return diff
+        return min(b - a for a, b in zip(l, l[1:]))
