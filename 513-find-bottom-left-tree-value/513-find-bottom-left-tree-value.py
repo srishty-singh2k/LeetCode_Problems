@@ -11,12 +11,10 @@ class Solution:
         res = root.val if root else None
         
         while(q):
-            current = []
             for _ in range(len(q)):
                 node = q.popleft()
-                current.append(node.val)
-                if node.left: q.append(node.left)
+                res = node.val
                 if node.right: q.append(node.right)
-            res = current[0]
+                if node.left: q.append(node.left)
         
         return res
