@@ -7,11 +7,14 @@
 class Solution:
     def tree2str(self, root: Optional[TreeNode]) -> str:
         if not root: return ''
-        left = '('+self.tree2str(root.left)+')'  if root.left else ''
-        right = '('+self.tree2str(root.right)+')'  if root.right else ''
-        if right and not left:
-            return str(root.val)+'()'+right
-        return str(root.val)+left+right
+        ret = str(root.val)
+        if root.left:
+            ret += '('+self.tree2str(root.left)+')'  
+        if root.right:
+            if not root.left:
+                ret += '()'
+            ret += '('+self.tree2str(root.right)+')'  
+        return ret
     
     
         
