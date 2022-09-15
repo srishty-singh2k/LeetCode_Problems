@@ -10,12 +10,12 @@ class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         if not node: return node
         d = {node: Node(node.val)}
-        q = deque()
+        q = []
         q.append(node)
         vis = set()
         
         while(q):
-            curr = q.popleft()
+            curr = q.pop()
             vis.add(curr)
                 
             for n in curr.neighbors:
