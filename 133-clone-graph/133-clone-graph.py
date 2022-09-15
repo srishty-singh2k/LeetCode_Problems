@@ -11,7 +11,7 @@ class Solution:
         if not node: return node
         d = {node: Node(node.val)}
         q = deque()
-        q.append(node) if node else None
+        q.append(node)
         vis = set()
         
         while(q):
@@ -24,6 +24,5 @@ class Solution:
                 if n not in d:
                     d[n] = Node(n.val)
                 d[curr].neighbors.append(d[n])
-            print(curr.val, [n.val for n in d[curr].neighbors], [each.val for each in q])
                 
         return d[node]
