@@ -21,5 +21,5 @@ class Solution:
                 for child in node.children:
                     q.append(child)
                 
-            if current: res.append(current)
+            res.append(current)
         return res
