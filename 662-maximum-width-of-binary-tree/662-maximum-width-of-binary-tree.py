@@ -13,4 +13,4 @@ class Solution:
                 dfs(node.left, level+1, column*2)
                 dfs(node.right, level+1, column*2+1)
         dfs(root, 0 , 0)
-        return max([max(di[level]) - min(di[level]) +1 for level in di])
+        return max([max(level) - min(level) +1 for level in di.values()])
